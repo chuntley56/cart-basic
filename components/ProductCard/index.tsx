@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'React'
+import React, { FunctionComponent, useState } from 'react'
 import { Product } from '../../types'
 import Image from 'next/image'
 
@@ -7,7 +7,9 @@ type ProductCardType = {
 }
 
 export const ProductCard: FunctionComponent<ProductCardType> = ({ product }) => {
-    const { name, sku, price} = product
+    const { name, sku, price } = product
+    const [state, setState] = useState<string[]>([])
+
     return (
         <div style={{backgroundColor: '#eee', textAlign: 'center'}}>
             <h3>
@@ -17,6 +19,7 @@ export const ProductCard: FunctionComponent<ProductCardType> = ({ product }) => 
             <p>
                 ${price}
             </p>
+            <button onClick={() => setState(prev => [...prev, sku])}>Add to cart</button>
         </div>
     )
 }

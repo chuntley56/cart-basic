@@ -26,15 +26,16 @@ export const ProductList: FunctionComponent<ProductListType> = ({ products }) =>
                 const isInCart = cart.findIndex(e => e.sku === sku) !== -1 ?? false
                 
                 return (
-                    <div key={i}  style={{backgroundColor: '#eee', textAlign: 'center'}}>
+                    <div key={i}  style={{backgroundColor: '#eee', paddingBottom: '20px', paddingTop: '20px', textAlign: 'center'}}>
                         <h3>
                             {name}
                         </h3>
                         <Image alt={name} height={200} width={200} src={`https://dsc-assets.imgix.net/images/product-images/product-tile/${sku}.png`} />
-                        <p>
-                            ${price}
-                        </p>
-                        <button onClick={() => handleClick(isInCart, sku)}>{isInCart ? 'Remove from cart' : 'Add to cart'}</button>
+                        <div>
+                            <button onClick={() => handleClick(isInCart, sku)} style={{backgroundColor: '#001233', border: 'none', color:'#efe0ca', padding: '10px 20px'}}>
+                                {isInCart ? 'Remove from cart' : `Add $${price}`}
+                            </button>
+                        </div>
                     </div>
                 )
             })

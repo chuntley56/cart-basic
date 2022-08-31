@@ -4,11 +4,11 @@ import Image from 'next/image'
 
 type ProductCardType = {
     product: Product
+    onClick: () => void
 }
 
-export const ProductCard: FunctionComponent<ProductCardType> = ({ product }) => {
+export const ProductCard: FunctionComponent<ProductCardType> = ({ onClick, product }) => {
     const { name, sku, price } = product
-    const [state, setState] = useState<string[]>([])
 
     return (
         <div style={{backgroundColor: '#eee', textAlign: 'center'}}>
@@ -19,7 +19,7 @@ export const ProductCard: FunctionComponent<ProductCardType> = ({ product }) => 
             <p>
                 ${price}
             </p>
-            <button onClick={() => setState(prev => [...prev, sku])}>Add to cart</button>
+            <button onClick={onClick}>Add to cart</button>
         </div>
     )
 }

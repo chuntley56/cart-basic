@@ -14,7 +14,9 @@ export const ProductList: FunctionComponent<ProductListType> = ({ products }) =>
 
         if (!isInCart) {
             setCart(cart => [...cart, { sku, quantity: 1 }])
-        } 
+        } else {
+            setCart(cart.filter(e => e.sku !== sku))
+        }
     }
 
     return (

@@ -6,6 +6,20 @@ export type ProductListType = {
    products: Product[]
 }
 
+const buttonStyleActive = {
+    backgroundColor: '#001233',
+    border: 'none',
+    color: '#efe0ca',
+    padding: '10px 20px'
+}
+
+const buttonStyleInactive = {
+    backgroundColor: '#8e8d8d',
+    border: 'none',
+    color: '#eee',
+    padding: '10px 20px'
+}
+
 export const ProductList: FunctionComponent<ProductListType> = ({ products }) => {
     const [cart, setCart] = useState<{ sku: string, quantity: number }[]>([])
 
@@ -32,7 +46,7 @@ export const ProductList: FunctionComponent<ProductListType> = ({ products }) =>
                         </h3>
                         <Image alt={name} height={200} width={200} src={`https://dsc-assets.imgix.net/images/product-images/product-tile/${sku}.png`} />
                         <div>
-                            <button onClick={() => handleClick(isInCart, sku)} style={{backgroundColor: '#001233', border: 'none', color:'#efe0ca', padding: '10px 20px'}}>
+                            <button onClick={() => handleClick(isInCart, sku)} style={isInCart ? buttonStyleInactive : buttonStyleActive}>
                                 {isInCart ? 'Remove from cart' : `Add $${price}`}
                             </button>
                         </div>

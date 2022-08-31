@@ -9,6 +9,13 @@ export type ProductListType = {
 export const ProductList: FunctionComponent<ProductListType> = ({ products }) => {
     const [cart, setCart] = useState<string[]>([])
     console.log({ cart })
+    const handleClick = (sku: string) => {
+        const isInCart = cart.includes(sku)
+
+        if (!isInCart) {
+            setCart(cart => [...cart, sku])
+        }
+    }
 
     return (
         <div style={{display: 'flex', gap: '50px', justifyContent: 'center'}}>
@@ -23,7 +30,7 @@ export const ProductList: FunctionComponent<ProductListType> = ({ products }) =>
                         <p>
                             ${price}
                         </p>
-                        <button onClick={() => setCart(cart => [...cart, product.sku])}>Add to cart</button>
+                        <button onClick={() => handleClick(sku)}>Add to cart</button>
                     </div>
                 )
             })

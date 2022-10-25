@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['dsc-assets.imgix.net'],
+    domains: ['dsc-assets.imgix.net', 'face-assets.dollarshaveclub.com'],
   },
 }
 

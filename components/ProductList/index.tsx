@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useState } from 'react'
-import { Product } from '../../types'
+import { Cart, Product } from '../../types'
 import Image from 'next/image'
 
 export type ProductListType = {
-   products: Product[]
-}
+    cart: Cart
+    handleClick: any
+    products: Product[];
+};
 
 const buttonStyleActive = {
     backgroundColor: '#001233',
@@ -20,31 +22,20 @@ const buttonStyleInactive = {
     padding: '10px 20px'
 }
 
-export const ProductList: FunctionComponent<ProductListType> = ({ products }) => {
-    const [cart, setCart] = useState<{ sku: string, quantity: number }[]>([])
-
-    console.log({ cart })
-    const handleClick = (isInCart: boolean,sku: string) => {
-
-        if (!isInCart) {
-            setCart(cart => [...cart, { sku, quantity: 1 }])
-        } else {
-            setCart(cart.filter(e => e.sku !== sku))
-        }
-    }
+export const ProductList: FunctionComponent<ProductListType> = ({ cart, handleClick, products }) => {
 
     return (
-        <div style={{display: 'flex', gap: '50px', justifyContent: 'center'}}>
+        <div style={{display: 'flex', gap: '50px', justifyContent: 'center', marginTop:'50px'}}>
             {products.map((product: any, i) => {
                 const { name, price, sku } = product
                 const isInCart = cart.findIndex(e => e.sku === sku) !== -1 ?? false
                 
                 return (
                     <div key={i}  style={{backgroundColor: '#eee', paddingBottom: '20px', paddingTop: '20px', textAlign: 'center'}}>
+                        <Image alt={name} height={200} width={200} src={`https://dsc-assets.imgix.net/images/product-images/product-tile/${sku}.png`} />
                         <h3>
                             {name}
                         </h3>
-                        <Image alt={name} height={200} width={200} src={`https://dsc-assets.imgix.net/images/product-images/product-tile/${sku}.png`} />
                         <div>
                             <button onClick={() => handleClick(isInCart, sku)} style={isInCart ? buttonStyleInactive : buttonStyleActive}>
                                 {isInCart ? 'Remove from cart' : `Add $${price}`}

@@ -2,17 +2,12 @@ import React, { FunctionComponent } from "react";
 import { NavType } from "../../types";
 import Image from "next/image";
 import CartIcon from "../CartIcon";
+import styles from "./index.module.scss";
 
 export const Nav: FunctionComponent<NavType> = ({ cart }) => {
   return (
-    <div
-      style={{
-        backgroundColor: "#001233",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <div style={{ margin: "30px 20px" }}>
+    <div className={styles.nav}>
+      <div className={styles.logo}>
         <Image
           alt="logo"
           height={56}

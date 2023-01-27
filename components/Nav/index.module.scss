@@ -1,0 +1,11 @@
+@import "../../styles/tokens.scss";
+
+.nav {
+  background-color: $color-primary;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  margin: 30px 20px;
+}

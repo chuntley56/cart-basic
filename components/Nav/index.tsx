@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { NavType } from "../../types";
+//import { NavType } from "../../types";
 import Image from "next/image";
 import CartIcon from "../CartIcon";
 import styles from "./index.module.scss";
 
-export const Nav: FunctionComponent<NavType> = ({ cart }) => {
+export const Nav: FunctionComponent = () => {
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>

@@ -16,3 +16,14 @@ export type Product = {
     value: number;
   };
 };
+
+export type ProductListType = {
+  cart: Cart;
+  handleClick: (isInCart: boolean, sku: string) => void;
+};
+
+export type ProductListViewType = {
+  cart: Cart;
+  handleClick: (isInCart: boolean, sku: string) => void;
+  products: Product[];
+};

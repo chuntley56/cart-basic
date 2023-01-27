@@ -1,16 +1,14 @@
-import React, { FunctionComponent } from 'react'
-import { Cart } from '../../types'
-//import { CartIcon } from '../../assets'
-import Image from 'next/Image'
+import React, { FunctionComponent } from "react";
+import { Cart } from "../../types";
+import cartIcon from "/public/cartIcon.svg";
+import Image from "next/image";
 
 export type CartIconType = {
-    cart: Cart
-}
+  cart: Cart;
+};
 
-export const CartIcon: FunctionComponent<CartIconType> = ({ cart }) => {
+const CartIcon: FunctionComponent = () => {
+  return <Image alt="cart icon" src={cartIcon} height={50} width={50} />;
+};
 
-    return (
-        <Image alt="cart icon" src='../../assets.cart-icon.svg' />
-    )
-
-}
+export default CartIcon;
